@@ -30,10 +30,7 @@ Con el siguiente comando se ejecuta el cliente en modo de desarrollo
 ```
 npm run serve
 ```
-En caso de querer compilarlo para poder lanzarlo a producción: 
-```
-npm run build
-``` 
+
 
 
 
