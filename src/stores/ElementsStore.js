@@ -30,7 +30,5 @@ export const useElementsStore = defineStore('elementsStore', {
     
  
     },
-    persistedState: {
-        persist: true
-    }
+ 
 })

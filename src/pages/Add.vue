@@ -8,20 +8,20 @@
   
 <script> 
 import defaultLayoutVue from '@/components/defaultLayout.vue' 
-import { useUsersStore } from '@/stores/UsersStore';
+import { useAuthStore } from '@/stores/AuthStore';
 export default {
   name: 'AddPage',
   components: {defaultLayoutVue},
   data(){
         return {
             text: "",
-      usersStore: useUsersStore(),
+      authStore: useAuthStore(),
         }
     },
   methods: {
  
     send() {
-      const email = this.usersStore.getSelf()
+      const email = this.authStore.getSelf()
     this.$socket.emit('createElement', {content: this.text, sender: email}, (res) => {
         console.log('---- ADD ----')
         console.log(res)

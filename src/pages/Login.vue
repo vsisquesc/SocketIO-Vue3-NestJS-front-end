@@ -9,18 +9,18 @@
 </template>
 
 <script>
-import { useUsersStore } from '@/stores/UsersStore';
+import { useAuthStore } from '@/stores/AuthStore';
 
 export default {
   name: 'LoginPage',
   data() {
     return {
       text: "",
-      usersStore: useUsersStore(),
+      authStore: useAuthStore(),
     }
   },
   mounted() {
-    if (this.usersStore.getSelf() != undefined) {
+    if (this.authStore.getSelf() != undefined) {
       console.log("already logged in")
       this.$router.push('AddPage')
     }
@@ -44,7 +44,7 @@ export default {
           alert('user already logged in')
         } else {
           const token = `Bearer ${data.access_token}`
-          this.usersStore.login(this.text, token)
+          this.authStore.login(this.text, token)
           this.$loginSocket(token)
           this.$router.push('AddPage')
         }

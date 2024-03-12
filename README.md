@@ -1,25 +1,20 @@
 # SocketIO-Vue3-NestJS-front-end
 
-## Project setup
+## 1º Instalar dependencias
+Se debe ejecutar el siguiente comando para instalar las dependencias
 ```
-npm install
+npm i
 ```
 
-### Compiles and hot-reloads for development
+### 2º Ejecutar el cliente
+Con el siguiente comando se ejecuta el cliente en modo de desarrollo
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
+En caso de querer compilarlo para poder lanzarlo a producción: 
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 

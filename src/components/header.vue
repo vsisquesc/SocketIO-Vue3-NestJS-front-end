@@ -3,29 +3,27 @@
         <router-link to="/AddPage">Add element to the list</router-link>
         <router-link to="/UpdatePage">Edit element from the list</router-link>
         <router-link to="/RemovePage">Delete element from the list</router-link> 
-        <span @click="logoutUserOut">LogOut</span> 
+        <button @click="logoutUserOut">LogOut</button> 
     </div>
 </template>
      
 <script> 
 
-import { useUsersStore } from '@/stores/UsersStore';
+import { useAuthStore } from '@/stores/AuthStore';
 
 export default {
   name: 'headerVue',    
   data() {
     return {
-      usersStore: useUsersStore(),
+      authStore: useAuthStore(),
     }
   },
   methods:{
     logoutUserOut() {       
-        const email = this.usersStore.getSelf()
-        this.$socket.emit('userLogout', email, (res) => {  
-          if(res){
-            this.usersStore.logout()
+        const email = this.authStore.getSelf()
+        this.$socket.emit('userLogout', email, () => { 
+            this.authStore.logout()
             this.$router.push('/')
-          }
         })  
     }
   }

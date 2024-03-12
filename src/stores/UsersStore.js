@@ -3,25 +3,14 @@ import { defineStore } from "pinia";
 
 export const useUsersStore = defineStore('usersStore', {
     state: () => {
-        return {
-          myself: undefined,
-          token: undefined,
+        return { 
           users: [],
         }
       },
 
     actions: {
-        login(value, token){
-            this.myself = value
-            this.token = token
-        },
-        logout(){
-            this.myself =undefined
-            this.token = undefined
-        },
-        getSelf(){
-            return this.myself
-        },
+ 
+ 
         setUsers (arr) {
             this.users = arr.map(el=>el.email)
         },
@@ -40,7 +29,5 @@ export const useUsersStore = defineStore('usersStore', {
     
  
     },
-    persistedState: {
-        persist: true
-    }
+ 
 })

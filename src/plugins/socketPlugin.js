@@ -3,16 +3,15 @@ import { io } from "socket.io-client";
 
 import { useElementsStore } from '@/stores/ElementsStore'
 import { useUsersStore } from '@/stores/UsersStore'
+import { useAuthStore } from '@/stores/AuthStore'
 
 
 const socketPlugin = {
   install(app, { connection }) {
 
-
-
-
     const store = useElementsStore()
     const users = useUsersStore()
+    const auth = useAuthStore()
 
     const login = function (token) {
       // Crea una instancia de socket.io-client
@@ -78,6 +77,11 @@ const socketPlugin = {
     }
 
     app.config.globalProperties.$loginSocket = login;
+
+    if(auth.getSelf() != undefined && app.config.globalProperties.$socket == undefined){
+      const token = auth.getToken()
+      login(token)
+    }
     // Añade más manejadores de eventos según sea necesario
   }
 };

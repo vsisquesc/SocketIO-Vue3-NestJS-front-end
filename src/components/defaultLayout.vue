@@ -14,7 +14,7 @@
 </template>
   
 <script> 
-import { useUsersStore } from '@/stores/UsersStore';
+import { useAuthStore } from '@/stores/AuthStore';
 import elementsListVue from '@/components/elementsList.vue'
 import usersListVue from '@/components/usersList.vue'
 import headerVue from '@/components/header.vue'
@@ -23,11 +23,11 @@ export default {
   components: {elementsListVue, headerVue, usersListVue},
   data() {
     return {  
-      usersStore: useUsersStore(),
+      authStore: useAuthStore(),
     }
   },
   mounted() {
-    if (this.usersStore.getSelf() == undefined) {
+    if (this.authStore.getSelf() == undefined) {
       this.$router.push('/')
     }
   },
