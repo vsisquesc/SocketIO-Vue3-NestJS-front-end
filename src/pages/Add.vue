@@ -8,18 +8,21 @@
   
 <script> 
 import defaultLayoutVue from '@/components/defaultLayout.vue' 
+import { useUsersStore } from '@/stores/UsersStore';
 export default {
   name: 'AddPage',
   components: {defaultLayoutVue},
   data(){
         return {
             text: "",
+      usersStore: useUsersStore(),
         }
     },
   methods: {
  
     send() {
-    this.$socket.emit('createElement', {content: this.text}, (res) => {
+      const email = this.usersStore.getSelf()
+    this.$socket.emit('createElement', {content: this.text, sender: email}, (res) => {
         console.log('---- ADD ----')
         console.log(res)
       }) 

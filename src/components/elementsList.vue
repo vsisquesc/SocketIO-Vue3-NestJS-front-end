@@ -3,7 +3,7 @@
       <button v-for="(element, index) in elementsStore.getElements()"
         v-bind:class="getClass(element)"
        :key="index" @click="selected(element)">
-        {{ `${index} -> ${element.content}` }}
+        {{ `${index} -> ${element.sender} -> ${element.content} ` }}
       </button>
   </div>
 </template>
