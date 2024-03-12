@@ -1,8 +1,5 @@
 <template>
-  <!-- <form @submit="saveUser">
-    <input type="email" v-model="text" required />
-    <input type="submit" value="login" />
-  </form> -->
+ 
     <input type="email" v-model="text" required />
     <input type="submit" value="login" @click="saveUser" />
 
@@ -28,6 +25,10 @@ export default {
   methods: {
 
     saveUser() {
+      if(this.text.length == 0){
+        alert('Invalid e-mail')
+        return
+      }
       window.fetch('http://localhost:3001/auth/login', {
         method: "POST",
         headers: {

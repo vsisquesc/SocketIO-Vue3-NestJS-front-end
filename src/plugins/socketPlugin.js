@@ -13,8 +13,7 @@ const socketPlugin = {
     const users = useUsersStore()
     const auth = useAuthStore()
 
-    const login = function (token) {
-      // Crea una instancia de socket.io-client
+    const login = function (token) { 
 
       const socketOptions = {
         transportOptions: {
@@ -27,15 +26,9 @@ const socketPlugin = {
       };
 
       const socket = io(connection, socketOptions);
-
-      // Opción 1: Inyecta el socket en todas las instancias de Vue para que puedas acceder a él como `this.$socket`
+ 
       app.config.globalProperties.$socket = socket;
-
-      // Opción 2: Proporciona una manera de acceder al socket usando `inject` en la composición API
-      app.provide('socket', socket);
-
-      // Ejemplo de cómo escuchar un evento al instalar el plugin
-      // Puedes eliminar esto o personalizarlo según tus necesidades
+ 
       socket.on("connect", () => {
         console.log("Conectado al servidor de WebSocket");
         socket.emit('findAllElements', {}, (res) => {
@@ -65,12 +58,11 @@ const socketPlugin = {
         store.removeElement(el)
       })
 
-      // Manejo de la reconexión
+ 
       socket.on("reconnect", (attempt) => {
         console.log(`Reconectado después de ${attempt} intentos`);
       });
-
-      // Manejo de la desconexión
+ 
       socket.on("disconnect", (reason) => {
         console.log(`Desconectado del servidor de WebSocket: ${reason}`);
       });
@@ -81,8 +73,7 @@ const socketPlugin = {
     if(auth.getSelf() != undefined && app.config.globalProperties.$socket == undefined){
       const token = auth.getToken()
       login(token)
-    }
-    // Añade más manejadores de eventos según sea necesario
+    } 
   }
 };
 

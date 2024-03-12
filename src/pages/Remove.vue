@@ -29,16 +29,7 @@
           }) 
         }
       }
-    },
-    mounted() {
-      // Obtener los correos del BackEnd
-      this.$socket.emit('findAllElements', {}, (res) => {
-        console.log(res)
-
-        this.elements = res;
-      })
-      
-    },
+    }
   
   }
   </script>
