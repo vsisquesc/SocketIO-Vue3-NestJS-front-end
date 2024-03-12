@@ -3,14 +3,32 @@
         <router-link to="/AddPage">Add element to the list</router-link>
         <router-link to="/UpdatePage">Edit element from the list</router-link>
         <router-link to="/RemovePage">Delete element from the list</router-link> 
+        <span @click="logoutUserOut">LogOut</span> 
     </div>
 </template>
      
 <script> 
 
+import { useUsersStore } from '@/stores/UsersStore';
 
 export default {
-  name: 'headerVue',
+  name: 'headerVue',    
+  data() {
+    return {
+      usersStore: useUsersStore(),
+    }
+  },
+  methods:{
+    logoutUserOut() {       
+        const email = this.usersStore.getSelf()
+        this.$socket.emit('userLogout', email, (res) => {  
+          if(res){
+            this.usersStore.logout()
+            this.$router.push('/')
+          }
+        })  
+    }
+  }
 }
 </script>
 

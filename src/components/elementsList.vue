@@ -1,6 +1,6 @@
 <template>
  <div class="list">  
-      <button v-for="(element, index) in content"
+      <button v-for="(element, index) in elementsStore.getElements()"
         v-bind:class="getClass(element)"
        :key="index" @click="selected(element)">
         {{ `${index} -> ${element.content}` }}
@@ -16,14 +16,11 @@ export default {
   name: 'elementsListVue',
   data(){
         return {
-          elementsStore: useElementsStore(),
-          content:[],
+          elementsStore: useElementsStore(), 
           chosenElement: undefined
         }
     },
-    created () {
-        this.content = this.elementsStore.getElements();
-    },
+ 
     methods:{
       getClass(el){
         return this.chosenElement == el ? 'chosen' : ''
