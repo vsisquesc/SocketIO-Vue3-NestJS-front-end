@@ -15,8 +15,8 @@ La segunda página permite editar los elementos, para ello tiene que clicar en u
 En la última página se permite borrar los elementos clicando en ellos y luego pulsando el botón situado en el lateral izquierdo.
 
 Para cerrar sesión es necesario pulsar el botón `logout` situado en la parte superior derecha de la pantalla, esto se debe a que se ha hecho uso de pinia para almacenar los credenciales de usuario de manera persistente.
- 
 
+La conexión al Back-end se realiza mediante un plugin; este se encarga de establecer una conexión mediante WebSockets con el servidor. Este plugin expone el socket al resto del front-end y permite emitir eventos (como el de creación de un nuevo elemento) y definir la manera en la que se actua cuando se recibe un evento emitido por el servidor (por ejemplo, cuando un usuario ha eliminado un elemento, este será eliminado de la lista que ve el usuario).
 
 ## Ejecución
 ### 1º Instalar dependencias
