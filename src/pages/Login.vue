@@ -7,7 +7,7 @@
 
 <script>
 import { useAuthStore } from '@/stores/AuthStore';
-
+import emailRegex from 'email-regex';
 export default {
   name: 'LoginPage',
   data() {
@@ -25,7 +25,8 @@ export default {
   methods: {
 
     saveUser() {
-      if(this.text.length == 0){
+      const isEmail = emailRegex({exact: true}).test(this.text);
+      if(!isEmail){
         alert('Invalid e-mail')
         return
       }
