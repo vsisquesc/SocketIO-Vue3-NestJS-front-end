@@ -21,8 +21,8 @@ export default {
   methods: {
  
     send() {
-      const email = this.authStore.getSelf()
-    this.$socket.emit('createElement', {content: this.text, sender: email}, (res) => {
+
+    this.$socket.emit('createElement', {content: this.text}, (res) => {
         console.log('---- ADD ----')
         console.log(res)
       }) 

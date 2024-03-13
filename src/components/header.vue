@@ -19,10 +19,10 @@ export default {
     }
   },
   methods:{
-    logoutUserOut() {       
-        const email = this.authStore.getSelf()
-        this.$socket.emit('userLogout', email, () => { 
+    logoutUserOut() {        
+      this.$socket.emit('userLogout', {}, () => { 
             this.authStore.logout()
+            this.$socket.disconnect()
             this.$router.push('/')
         })  
     }
