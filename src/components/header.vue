@@ -20,8 +20,8 @@ export default {
   },
   methods:{
     logoutUserOut() {        
+      this.authStore.logout()
       this.$socket.emit('userLogout', {}, () => { 
-            this.authStore.logout()
             this.$socket.disconnect()
             this.$router.push('/')
         })  
